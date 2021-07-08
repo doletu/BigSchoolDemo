@@ -1,0 +1,45 @@
+﻿@model BigSchoolDemo.ViewModels.CourseViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course</h4>
+    <hr />
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Place)
+        @Html.DisplayFor(m => m.Place, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Place)
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Date)
+        @Html.DisplayFor(m => m.Date, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Time)
+        @Html.DisplayFor(m => m.Time, new { @class = "form-control" })
+    </div>
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
