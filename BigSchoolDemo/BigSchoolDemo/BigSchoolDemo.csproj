@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FollowingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -212,6 +213,14 @@
     <Compile Include="Migrations\202107080214024_AddFollower.Designer.cs">
       <DependentUpon>202107080214024_AddFollower.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107080626052_Fix.cs" />
+    <Compile Include="Migrations\202107080626052_Fix.Designer.cs">
+      <DependentUpon>202107080626052_Fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107080708501_Fix1.cs" />
+    <Compile Include="Migrations\202107080708501_Fix1.Designer.cs">
+      <DependentUpon>202107080708501_Fix1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -223,6 +232,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
     <Compile Include="ViewModels\FutureTime.cs" />
@@ -236,6 +246,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.all.js" />
+    <Content Include="Scripts\bootbox.all.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.locales.js" />
+    <Content Include="Scripts\bootbox.locales.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -323,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107080214024_AddFollower.resx">
       <DependentUpon>202107080214024_AddFollower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080626052_Fix.resx">
+      <DependentUpon>202107080626052_Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080708501_Fix1.resx">
+      <DependentUpon>202107080708501_Fix1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

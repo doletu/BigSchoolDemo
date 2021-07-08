@@ -11,7 +11,8 @@ namespace BigSchoolDemo.Models
     {
         public int Id { get; set; }
 
-      
+        public bool isCancelled { get; set; }
+
         public ApplicationUser Lecturer { get; set; }
         
         
@@ -26,10 +27,12 @@ namespace BigSchoolDemo.Models
 
         public DateTime DateTime { get; set; }
 
-       
-        [ForeignKey("Category")]
+        [Required]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+
+
+        
     }
 }

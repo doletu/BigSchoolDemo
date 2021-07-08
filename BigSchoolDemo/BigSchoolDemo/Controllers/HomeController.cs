@@ -24,7 +24,7 @@ namespace BigSchoolDemo.Controllers
             var upcoming = _dbContext.Courses.Include(c => c.Lecturer).Include(c => c.Category).Where(cm => cm.DateTime > DateTime.Now);
 
 
-            var viewmodel = new CourseViewModel
+            var viewmodel = new CoursesViewModel
             {
                 UpcomingCourses = upcoming,
                 ShowAction = User.Identity.IsAuthenticated,

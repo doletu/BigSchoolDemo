@@ -2,13 +2,12 @@
 @{
     ViewBag.Title = "Create";
 }
-@Html.ValidationSummary(true)
 @model BigSchoolDemo.ViewModels.CourseViewModel
 <h2>Create</h2>
-@using (Html.BeginForm("Create", "Course"))
+@using (Html.BeginForm(Model.Action, "Course"))
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(m=>m.Id)
 
     <div class="form-group">
 

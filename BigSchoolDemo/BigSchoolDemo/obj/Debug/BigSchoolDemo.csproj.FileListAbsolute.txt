@@ -118,4 +118,6 @@ C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\bin\S
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\bin\System.Web.Http.WebHost.xml
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Addattendance.resources
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.AddFollower.resources
+C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Fix.resources
+C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Fix1.resources
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.csprojAssemblyReference.cache

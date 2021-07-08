@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,7 +49,7 @@ namespace BigSchoolDemo.Controllers
                 Place = viewModel.Place
 
             };
-            dbContext.Courses.Add(course);
+            dbContext.Courses.AddOrUpdate(course);
             dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");
@@ -67,7 +68,7 @@ namespace BigSchoolDemo.Controllers
                         .Include(l => l.Lecturer)
                         .ToList();
 
-            var viewModel = new CourseViewModel
+            var viewModel = new CoursesViewModel
             {
                 UpcomingCourses = courses,
                 ShowAction = User.Identity.IsAuthenticated
@@ -94,6 +95,7 @@ namespace BigSchoolDemo.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+
             var userId = User.Identity.GetUserId();
 
             var courses = dbContext.Courses
@@ -102,29 +104,47 @@ namespace BigSchoolDemo.Controllers
             var viewModel = new CourseViewModel
             {
                 Categories = dbContext.Categories.ToList(),
-                Date= courses.DateTime.ToString("dd/M/yyyy"),
+                Date = courses.DateTime.ToString("dd/M/yyyy"),
                 Time = courses.DateTime.ToString("HH:mm"),
-                Category= (byte)courses.CategoryId,
-                Place=courses.Place
+                Category = (byte)courses.CategoryId,
+                Place = courses.Place,
+                Heading = "Edit Course",
+                Id=courses.Id
             };
             return View("Create",viewModel);
         }
 
+
+
         [Authorize]
-        public ActionResult Delete(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(CourseViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                model.Categories = dbContext.Categories.ToList();
+                return View("Create", model);
+            }
+
             var userId = User.Identity.GetUserId();
 
             var courses = dbContext.Courses
-                        .Single(a => a.CategoryId == id && a.LecturerId == userId);
+                        .Single(a => a.CategoryId == model.Id && a.LecturerId == userId);
 
-            if (courses != null)
-            {
-                dbContext.Courses.Remove(courses);
-            }
-            return View();
+            courses.Place = model.Place;
+            courses.DateTime = model.GetDateTime();
+            courses.CategoryId = model.Category;
+
+            dbContext.SaveChanges();
+            return RedirectToAction("Index","Home");
         }
+
+
+
        
 
+
+       
     }
 }

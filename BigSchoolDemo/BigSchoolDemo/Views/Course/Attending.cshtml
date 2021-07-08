@@ -1,4 +1,5 @@
 ﻿
+@model BigSchoolDemo.ViewModels.CoursesViewModel
 @{
     ViewBag.Title = "Attending";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,8 +7,7 @@
 
 }
 
-@model BigSchoolDemo.ViewModels.CourseViewModel
-
+<h2>Attending</h2>    
 <div class="row">
     <ul class="course">
         @foreach (var item in Model.UpcomingCourses)
@@ -37,11 +37,12 @@
                     </span>
                     <span class="category">
                         @item.Category.Name
+                        @if (Model.ShowAction)
+                        {
+                            <button data-course-id="@item.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                        }
                     </span>
-                    @if (Model.ShowAction)
-                    {
-                        <button data-course-id="@item.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                    }
+
                 </div>
 
             </li>
@@ -88,4 +89,4 @@
 
 
     </script>
-
+}

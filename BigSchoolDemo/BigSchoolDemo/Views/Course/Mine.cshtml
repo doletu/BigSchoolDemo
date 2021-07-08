@@ -10,7 +10,7 @@
 
 <h2>Mine</h2>
 
-<div class="row">
+
     <ul class="course">
         @foreach (var item in Model)
         {
@@ -39,7 +39,10 @@
 
                 <div class="action">
                     <a href="@Url.Action("Edit","Course",new { Id=item.Id})">Edit</a>||
-                    <a href="@Url.Action("Delete","Course",new { Id=item.Id})">Delete</a>
+
+
+
+                    <a href="#" class="js-cancel-course" data-course-id="@item.Id">Delete</a>
                 </div>
 
             </li>
@@ -47,7 +50,7 @@
         }
 
     </ul>
-</div>
+
 
 
 
@@ -60,30 +63,27 @@
     <script>
 
         $(document).ready(function () {
-            $(".js-toggle-attendance").click(function (e) {
-                var button = $(e.target);
-                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
-                    .done(function () {
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-                    })
-                    .fail(function () {
-                        alert("Something Failed");
-                    });
-            });
-            $(".js-toggle-follow").click(function (e) {
-                var button = $(e.target);
-                $.post("/api/followings", { courseId: button.attr("data-user-id") })
-                    .done(function () {
-                        button.text("Following");
-                    })
-                    .fail(function () {
-                        alert("Something Failed");
+            $(".js-cancel-course").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Are you sure to cancel?",
+                    function () {
+                        $.ajax({
+                            url: "/api/courses/" + link.attr("data-course-id"),
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                            })
+
+                            .fail(function () {
+                                alert("Something Failed");
+                            });
                     });
             });
         });
-
-
+                
     </script>
 }
