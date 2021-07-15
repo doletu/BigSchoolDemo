@@ -121,3 +121,4 @@ C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\D
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Fix.resources
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Fix1.resources
 C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.csprojAssemblyReference.cache
+C:\Users\Tu\OneDrive\Máy tính\DoAn\BigSchool\BigSchoolDemo\BigSchoolDemo\obj\Debug\BigSchoolDemo.Migrations.Follow.resources

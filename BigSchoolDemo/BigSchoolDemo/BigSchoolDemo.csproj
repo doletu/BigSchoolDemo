@@ -221,6 +221,10 @@
     <Compile Include="Migrations\202107080708501_Fix1.Designer.cs">
       <DependentUpon>202107080708501_Fix1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107150147511_Follow.cs" />
+    <Compile Include="Migrations\202107150147511_Follow.Designer.cs">
+      <DependentUpon>202107150147511_Follow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -304,6 +308,7 @@
     <Content Include="Views\Course\Mine.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\LectureIamGoing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107080708501_Fix1.resx">
       <DependentUpon>202107080708501_Fix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107150147511_Follow.resx">
+      <DependentUpon>202107150147511_Follow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

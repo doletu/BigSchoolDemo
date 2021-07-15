@@ -32,7 +32,10 @@ namespace BigSchoolDemo.Models
         public Category Category { get; set; }
 
 
+        public bool isFollowing = false;
+        public bool isGoing = false;
 
-        
+
+
     }
 }

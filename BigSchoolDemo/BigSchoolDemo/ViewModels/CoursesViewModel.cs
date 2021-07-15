@@ -10,5 +10,8 @@ namespace BigSchoolDemo.ViewModels
     {
         public IEnumerable<Course> UpcomingCourses { get; set; }
         public bool ShowAction { get; set; }
+
+
+
     }
 }

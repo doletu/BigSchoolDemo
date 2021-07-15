@@ -1,6 +1,7 @@
 ﻿using BigSchoolDemo.Models;
 using BigSchoolDemo.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -142,9 +143,38 @@ namespace BigSchoolDemo.Controllers
 
 
 
-       
+
+        public ActionResult LectureIamGoing()
+        {
+            ApplicationUser currentUser =
+            System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+           
+            //danh sách giảng viên được theo dõi bởi người dùng (đăng nhập) hiện tại
+            var listFollwee =dbContext.Followings.Where(p => p.FollowerId ==
+            currentUser.Id).ToList();
+            //danh sách các khóa học mà người dùng đã đăng ký
+            var listAttendances = dbContext.Attendances.Where(p => p.AttendeeId ==
+            currentUser.Id).ToList();
+            var courses = new List<Course>();
+            foreach (var course in listAttendances)
+            {
+                foreach (var item in listFollwee)
+                {
+                    if (item.FolloweeId == course.AttendeeId)
+                    {
+                        Course objCourse = dbContext.Courses.Include("Category").FirstOrDefault(p=>p.Id==course.CourseId);
+                        ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                        .FindById(objCourse.LecturerId);
+                        objCourse.Lecturer = user;
+
+                        courses.Add(objCourse);
+                    }
+                }
+            }
+            return View(courses);
+        }
 
 
-       
     }
 }

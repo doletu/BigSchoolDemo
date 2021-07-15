@@ -12,7 +12,7 @@ namespace BigSchoolDemo.Controllers
 {
     public class FollowingController : ApiController
     {
-        private ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
 
 
         public FollowingController()
@@ -27,7 +27,7 @@ namespace BigSchoolDemo.Controllers
             var userId = User.Identity.GetUserId();
             if (dbContext.Followings.Any(a => a.FollowerId == userId && a.FolloweeId == dto.FollweeId))
             {
-                return BadRequest("The Attendance already exist");
+                return BadRequest("Following already exist");
             }
 
 
@@ -40,9 +40,29 @@ namespace BigSchoolDemo.Controllers
             dbContext.Followings.Add(following);
             dbContext.SaveChanges();
 
-
-
             return Ok();
         }
+
+
+
+        [HttpDelete]
+        public IHttpActionResult DeleteFollowing(string id)
+        {
+
+            var userId = User.Identity.GetUserId();
+
+            var following = dbContext.Followings.SingleOrDefault(a => a.FollowerId == userId && a.FolloweeId == id);
+
+            if (following == null)
+            {
+                return NotFound();
+            }
+
+            dbContext.Followings.Remove(following);
+            dbContext.SaveChanges();
+
+            return Ok(id);
+        }
+
     }
 }

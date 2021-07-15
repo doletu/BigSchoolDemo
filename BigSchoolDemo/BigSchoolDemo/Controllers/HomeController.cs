@@ -21,7 +21,20 @@ namespace BigSchoolDemo.Controllers
 
         public ActionResult Index()
         {
-            var upcoming = _dbContext.Courses.Include(c => c.Lecturer).Include(c => c.Category).Where(cm => cm.DateTime > DateTime.Now);
+            var upcoming = _dbContext.Courses.Include(c => c.Lecturer).Include(c => c.Category).Where(cm => cm.DateTime > DateTime.Now).ToList();
+
+
+            foreach (var item in upcoming)
+            {
+                Attendance find = _dbContext.Attendances.FirstOrDefault(p => p.CourseId == item.Id && p.AttendeeId == item.Lecturer.Id);
+                if (find == null)
+                    item.isGoing = true;
+
+                Following findFollow = _dbContext.Followings.FirstOrDefault(p =>p.FollowerId == item.Lecturer.Id && p.FolloweeId == item.LecturerId);
+                if (findFollow == null)
+                    item.isFollowing = true;
+
+            }
 
 
             var viewmodel = new CoursesViewModel
@@ -30,8 +43,7 @@ namespace BigSchoolDemo.Controllers
                 ShowAction = User.Identity.IsAuthenticated,
 
             };
-            
-            
+
             return View(viewmodel);
         }
 
